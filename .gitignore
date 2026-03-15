@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+
+# Streamlit
+.streamlit/
+
+# Specific files to ignore for this project
+*.ipynb
+*.xlsx
+*.png
+drone_inventory_analysis.xlsx
+rack_distribution.png
+savings_graph.png
+stock_error_distribution.png
+
+# Keep CSVs as they are the data source in this case
+!*.csv
