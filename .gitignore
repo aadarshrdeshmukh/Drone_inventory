@@ -39,3 +39,7 @@ stock_error_distribution.png
 
 # Keep CSVs as they are the data source in this case
 !*.csv
+
+# Documentation and PDFs
+*.pdf
+*.docx
