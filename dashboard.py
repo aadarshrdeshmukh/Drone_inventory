@@ -47,6 +47,10 @@ st.markdown("""
         padding: 15px;
         border-radius: 8px;
         box-shadow: none;
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     
     /* Category-specific borders (No gradients) */
@@ -266,6 +270,10 @@ npv_amount = financial.loc[financial["Metric"] == "NPV", "Amount (₹)"].values[
 net_benefit = total_savings - investment
 roi = (net_benefit / investment) * 100
 
+# Calculate Savings Percentages
+total_baseline = original_labor_cost + error_inventory_value
+overall_savings_percent = (total_savings / total_baseline) * 100 if total_baseline > 0 else 0
+
 # ---------------------------------------------------
 # Sidebar Filter
 # ---------------------------------------------------
@@ -293,13 +301,13 @@ with st.container():
     st.subheader("Labor and Stock Optimization")
     c1, c2, c3 = st.columns(3)
     c1.metric("Original Labor", format_inr(original_labor_cost))
-    c2.metric("Labor Savings", format_inr(labor_savings))
-    c3.metric("Stock Savings", format_inr(stock_savings))
+    c2.metric("Labor Savings", format_inr(labor_savings), f"{labor_reduction_percent}%")
+    c3.metric("Stock Savings", format_inr(stock_savings), f"{stock_reduction_percent}%")
 
     st.markdown("<br>", unsafe_allow_html=True)
     
     c1, c2, c3 = st.columns(3)
-    c1.metric("Total Annual Savings", format_inr(total_savings))
+    c1.metric("Total Annual Savings", format_inr(total_savings), f"{overall_savings_percent:.2f}%")
     c2.metric("ROI (%)", f"{roi:.2f}%")
     c3.metric("Net Benefit", format_inr(net_benefit))
 
